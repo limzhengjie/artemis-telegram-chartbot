@@ -128,7 +128,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     message_text = update.message.text.strip()
     parts = message_text.split()
     
-    if len(parts) < 4:
+    # Only process messages that start with a valid metric
+    valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
+    if len(parts) < 4 or parts[0].lower() not in valid_metrics:
         return
     
     try:
