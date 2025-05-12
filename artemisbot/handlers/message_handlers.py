@@ -130,7 +130,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     
     # Only process messages that start with a valid metric
     valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
-    if len(parts) < 4 or parts[0].lower() not in valid_metrics:
+    if len(parts) < 4:
+        return
+        
+    # If the first word is not a valid metric, ignore the message completely
+    if parts[0].lower() not in valid_metrics:
         return
     
     try:
@@ -159,6 +163,15 @@ async def handle_group_message(message: Message, bot: Bot) -> None:
     # Remove the '=art' prefix and process the command
     command_text = message.text[4:].strip()
     if not command_text:
+        return
+        
+    parts = command_text.split()
+    if len(parts) < 4:
+        return
+        
+    # Only process messages that start with a valid metric
+    valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
+    if parts[0].lower() not in valid_metrics:
         return
         
     try:
