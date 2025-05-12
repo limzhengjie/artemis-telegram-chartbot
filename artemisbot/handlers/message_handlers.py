@@ -149,17 +149,17 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         )
 
 
-async def handle_group_message(message: Message, bot: Bot) -> None:
+async def handle_group_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle messages in group chats."""
-    print(f"Received group message: {message.text}")  # Debug log
+    print(f"Received group message: {update.message.text}")  # Debug log
     
     # Only process messages that start with '=art'
-    if not message.text or not message.text.strip().startswith('=art'):
+    if not update.message.text or not update.message.text.strip().startswith('=art'):
         print("Message doesn't start with =art, ignoring")  # Debug log
         return
         
     # Remove the '=art' prefix and process the command
-    command_text = message.text[4:].strip()
+    command_text = update.message.text[4:].strip()
     if not command_text:
         print("Empty command after =art, ignoring")  # Debug log
         return
@@ -179,17 +179,12 @@ async def handle_group_message(message: Message, bot: Bot) -> None:
     try:
         metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(command_text, is_group=True)
         
-        # Create a fake update object for process_chart_command
-        update = Update(0, message=message)
-        context = ContextTypes.DEFAULT_TYPE()
-        context.bot = bot
-        
         await process_chart_command(
             update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
         )
     except ValueError as e:
         print(f"Error processing command: {str(e)}")  # Debug log
-        await message.reply_text(
+        await update.message.reply_text(
             f"Error: {str(e)}\n\n"
             f"Format: =art <metric> <asset> <time_period> <granularity> [%]\n"
             f"Example: =art price solana 1w 1d"
