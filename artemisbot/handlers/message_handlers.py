@@ -161,7 +161,26 @@ async def handle_group_message(message: Message, bot: Bot) -> None:
     if not command_text:
         return
         
-    await process_chart_command(message, bot, command_text)
+    try:
+        metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(command_text, is_group=True)
+        
+        # Create a fake update object for process_chart_command
+        update = Update(0, message=message)
+        context = ContextTypes.DEFAULT_TYPE()
+        context.bot = bot
+        
+        await process_chart_command(
+            update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
+        )
+    except ValueError as e:
+        try:
+            await message.reply_text(
+                f"Error: {str(e)}\n\n"
+                f"Format: =art <metric> <asset> <time_period> <granularity> [%]\n"
+                f"Example: =art price solana 1w 1d"
+            )
+        except Exception as reply_error:
+            pass
 
 
 async def welcome_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
