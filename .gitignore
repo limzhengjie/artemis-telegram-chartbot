@@ -45,7 +45,6 @@ ENV/
 htmlcov/
 
 # Project specific
-artemis_mappings.json
 /tmp/artemis_telegram_bot.lock
 
 # Chrome driver
