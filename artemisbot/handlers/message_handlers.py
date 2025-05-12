@@ -130,11 +130,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     
     # Only process messages that start with a valid metric
     valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
-    if len(parts) < 4:
-        return
-        
-    # If the first word is not a valid metric, ignore the message completely
-    if parts[0].lower() not in valid_metrics:
+    
+    # If message is too short or doesn't start with a valid metric, ignore it completely
+    if len(parts) < 4 or parts[0].lower() not in valid_metrics:
         return
     
     try:
@@ -143,15 +141,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await process_chart_command(
             update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage
         )
-    except ValueError as e:
-        try:
-            await update.message.reply_text(
-                f"Error: {str(e)}\n\n"
-                f"Format: <metric> <asset> <time_period> <granularity> [%]\n"
-                f"Example: price solana 1w 1d"
-            )
-        except Exception as reply_error:
-            pass
+    except ValueError:
+        # Silently ignore invalid commands
+        return
 
 
 async def handle_group_message(message: Message, bot: Bot) -> None:
@@ -185,15 +177,9 @@ async def handle_group_message(message: Message, bot: Bot) -> None:
         await process_chart_command(
             update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
         )
-    except ValueError as e:
-        try:
-            await message.reply_text(
-                f"Error: {str(e)}\n\n"
-                f"Format: =art <metric> <asset> <time_period> <granularity> [%]\n"
-                f"Example: =art price solana 1w 1d"
-            )
-        except Exception as reply_error:
-            pass
+    except ValueError:
+        # Silently ignore invalid commands
+        return
 
 
 async def welcome_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
