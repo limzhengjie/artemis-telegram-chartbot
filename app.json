@@ -1,0 +1,27 @@
+{
+  "name": "Artemis Telegram Chart Bot",
+  "description": "A Telegram bot that generates charts from Artemis Analytics data",
+  "repository": "https://github.com/artemis-analytics/artemis-telegram-chartbot",
+  "keywords": ["python", "telegram", "bot", "artemis", "analytics", "charts"],
+  "env": {
+    "TELEGRAM_BOT_TOKEN": {
+      "description": "Your Telegram Bot Token",
+      "required": true
+    },
+    "ARTEMIS_API_KEY": {
+      "description": "Your Artemis API Key",
+      "required": true
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
+    }
+  ]
+}
