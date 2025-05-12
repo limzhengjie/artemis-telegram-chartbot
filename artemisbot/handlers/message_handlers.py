@@ -128,7 +128,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     message_text = update.message.text.strip()
     parts = message_text.split()
     
-    if len(parts) < 4:
+    # Only process messages that start with a valid metric
+    valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
+    
+    # If message is too short or doesn't start with a valid metric, ignore it completely
+    if len(parts) < 4 or parts[0].lower() not in valid_metrics:
         return
     
     try:
@@ -137,15 +141,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await process_chart_command(
             update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage
         )
-    except ValueError as e:
-        try:
-            await update.message.reply_text(
-                f"Error: {str(e)}\n\n"
-                f"Format: <metric> <asset> <time_period> <granularity> [%]\n"
-                f"Example: price solana 1w 1d"
-            )
-        except Exception as reply_error:
-            pass
+    except ValueError:
+        # Silently ignore invalid commands
+        return
 
 
 async def handle_group_message(message: Message, bot: Bot) -> None:
@@ -159,7 +157,29 @@ async def handle_group_message(message: Message, bot: Bot) -> None:
     if not command_text:
         return
         
-    await process_chart_command(message, bot, command_text)
+    parts = command_text.split()
+    if len(parts) < 4:
+        return
+        
+    # Only process messages that start with a valid metric
+    valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
+    if parts[0].lower() not in valid_metrics:
+        return
+        
+    try:
+        metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(command_text, is_group=True)
+        
+        # Create a fake update object for process_chart_command
+        update = Update(0, message=message)
+        context = ContextTypes.DEFAULT_TYPE()
+        context.bot = bot
+        
+        await process_chart_command(
+            update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
+        )
+    except ValueError:
+        # Silently ignore invalid commands
+        return
 
 
 async def welcome_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
