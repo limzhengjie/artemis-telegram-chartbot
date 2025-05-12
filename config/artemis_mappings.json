@@ -1,0 +1,2086 @@
+{
+  "artemis_id_to_symbols": {
+    "aave": [
+      "aave"
+    ],
+    "abstract": [
+      "abstract"
+    ],
+    "acala": [
+      "aca"
+    ],
+    "ach": [
+      "ach"
+    ],
+    "across": [
+      "acx"
+    ],
+    "aerodrome": [
+      "aero"
+    ],
+    "aeur": [
+      "aeur"
+    ],
+    "aevo": [
+      "aevo"
+    ],
+    "aioz": [
+      "aioz"
+    ],
+    "akash": [
+      "akt"
+    ],
+    "algorand": [
+      "algo"
+    ],
+    "altcoin": [
+      "altcoin"
+    ],
+    "angle_usd": [
+      "angle_usd"
+    ],
+    "apex": [
+      "apex"
+    ],
+    "aptos": [
+      "apt"
+    ],
+    "arbitrum": [
+      "arb"
+    ],
+    "arweave": [
+      "ar"
+    ],
+    "astar": [
+      "astr"
+    ],
+    "aurory": [
+      "aury"
+    ],
+    "ausd": [
+      "ausd"
+    ],
+    "avalanche": [
+      "avax"
+    ],
+    "avantis": [
+      "avantis"
+    ],
+    "axelar": [
+      "axl"
+    ],
+    "axie-infinity": [
+      "axs"
+    ],
+    "babylon": [
+      "baby"
+    ],
+    "balancer": [
+      "bal"
+    ],
+    "bananagun": [
+      "banana"
+    ],
+    "base": [
+      "base"
+    ],
+    "beam": [
+      "beam"
+    ],
+    "bedrock": [
+      "bedrock"
+    ],
+    "beldex": [
+      "bdx"
+    ],
+    "benqi_finance": [
+      "qi"
+    ],
+    "berachain": [
+      "bera"
+    ],
+    "bifrost": [
+      "bnc"
+    ],
+    "bitcoin": [
+      "btc"
+    ],
+    "bitcoin_cash": [
+      "bch"
+    ],
+    "bitcoin_sv": [
+      "bsv"
+    ],
+    "bitget": [
+      "bgb"
+    ],
+    "bitpay": [
+      "bitpay"
+    ],
+    "bitrock": [
+      "brock"
+    ],
+    "bittensor": [
+      "tao"
+    ],
+    "bittorrent": [
+      "btt"
+    ],
+    "blackrock": [
+      "blk"
+    ],
+    "blast": [
+      "blast"
+    ],
+    "bluefin": [
+      "blue"
+    ],
+    "blur": [
+      "blur"
+    ],
+    "bob": [
+      "bob"
+    ],
+    "boba": [
+      "boba"
+    ],
+    "bold": [
+      "bold"
+    ],
+    "bonk": [
+      "bonk"
+    ],
+    "brett": [
+      "brett"
+    ],
+    "brla": [
+      "brla"
+    ],
+    "bsc": [
+      "bnb"
+    ],
+    "busd": [
+      "busd"
+    ],
+    "canto": [
+      "canto"
+    ],
+    "cardano": [
+      "ada"
+    ],
+    "cctp": [
+      "cctp"
+    ],
+    "celestia": [
+      "tia"
+    ],
+    "celo": [
+      "celo"
+    ],
+    "centrifuge": [
+      "cfg"
+    ],
+    "ceur": [
+      "ceur"
+    ],
+    "cgusd": [
+      "cgusd"
+    ],
+    "chainlink": [
+      "link"
+    ],
+    "chiliz": [
+      "chz"
+    ],
+    "ckes": [
+      "ckes"
+    ],
+    "coinbase": [
+      "coin"
+    ],
+    "coindesk_20": [
+      "cd20"
+    ],
+    "compound": [
+      "comp"
+    ],
+    "conflux": [
+      "cfx"
+    ],
+    "convex": [
+      "cvx"
+    ],
+    "core": [
+      "core"
+    ],
+    "corn": [
+      "corn"
+    ],
+    "cosmos_ecosystem": [
+      "cosmos_ecosystem"
+    ],
+    "cosmoshub": [
+      "atom"
+    ],
+    "creal": [
+      "creal"
+    ],
+    "cronos": [
+      "cro"
+    ],
+    "cronos_zkevm": [
+      "zkcro"
+    ],
+    "crossfi": [
+      "xfi"
+    ],
+    "crvusd": [
+      "crvusd"
+    ],
+    "crypto-raiders": [
+      "raider"
+    ],
+    "curve": [
+      "crv"
+    ],
+    "cusd": [
+      "cusd"
+    ],
+    "cypher": [
+      "cypher"
+    ],
+    "dai": [
+      "dai"
+    ],
+    "debridge": [
+      "dbr"
+    ],
+    "decentraland": [
+      "mana"
+    ],
+    "decentral-games": [
+      "dg"
+    ],
+    "deepbook": [
+      "deep"
+    ],
+    "defi-kingdoms": [
+      "jewel"
+    ],
+    "defi-kingdoms-crystal": [
+      "crystal"
+    ],
+    "deusd": [
+      "deusd"
+    ],
+    "dexalot": [
+      "alot"
+    ],
+    "dexe": [
+      "dexe"
+    ],
+    "dfk": [
+      "dfk"
+    ],
+    "dogecoin": [
+      "doge"
+    ],
+    "dola": [
+      "dola"
+    ],
+    "drift": [
+      "drift"
+    ],
+    "dydx": [
+      "dydx"
+    ],
+    "dydx_v4": [
+      "dydx_v4"
+    ],
+    "ecash": [
+      "xec"
+    ],
+    "eigenlayer": [
+      "eigen"
+    ],
+    "eigenpie": [
+      "egp"
+    ],
+    "ens": [
+      "ens"
+    ],
+    "eos": [
+      "eos"
+    ],
+    "ethena": [
+      "ena"
+    ],
+    "ethereum": [
+      "eth"
+    ],
+    "ethereum_classic": [
+      "etc"
+    ],
+    "etherfi": [
+      "ethfi"
+    ],
+    "euler": [
+      "eul"
+    ],
+    "eura": [
+      "eura"
+    ],
+    "eurc": [
+      "eurc"
+    ],
+    "eurs": [
+      "eurs"
+    ],
+    "eurt": [
+      "eurt"
+    ],
+    "exactly": [
+      "exactly"
+    ],
+    "fantom": [
+      "ftm"
+    ],
+    "fartcoin": [
+      "fart"
+    ],
+    "fasttoken": [
+      "ftn"
+    ],
+    "fdusd": [
+      "fdusd"
+    ],
+    "fed_funds": [
+      "fed_funds"
+    ],
+    "fedwire": [
+      "fedwire"
+    ],
+    "fetch": [
+      "fet"
+    ],
+    "filecoin": [
+      "fil"
+    ],
+    "flare": [
+      "flr"
+    ],
+    "flexusd": [
+      "flexusd"
+    ],
+    "floki": [
+      "floki"
+    ],
+    "flow": [
+      "flow"
+    ],
+    "franklin_templeton": [
+      "ben"
+    ],
+    "frax": [
+      "fxs"
+    ],
+    "frax_usd": [
+      "frax"
+    ],
+    "frequency": [
+      "frqcy"
+    ],
+    "frxusd": [
+      "frxusd"
+    ],
+    "fuse": [
+      "fuse"
+    ],
+    "fxusd": [
+      "fxusd"
+    ],
+    "gains-network": [
+      "gns"
+    ],
+    "gala": [
+      "gala"
+    ],
+    "gate": [
+      "gt"
+    ],
+    "geodnet": [
+      "geod"
+    ],
+    "gho": [
+      "gho"
+    ],
+    "gmx": [
+      "gmx"
+    ],
+    "gnosis": [
+      "gno"
+    ],
+    "gnosispay": [
+      "gnosispay"
+    ],
+    "gods-unchained": [
+      "gods"
+    ],
+    "goldfinch": [
+      "gfi"
+    ],
+    "grass": [
+      "grass"
+    ],
+    "guild-of-guardians": [
+      "gog"
+    ],
+    "gusd": [
+      "gusd"
+    ],
+    "hashnote": [
+      "hashnote"
+    ],
+    "hedera": [
+      "hbar"
+    ],
+    "helium": [
+      "hnt"
+    ],
+    "hivemapper": [
+      "honey"
+    ],
+    "holdstation": [
+      "hold"
+    ],
+    "holyheld": [
+      "holyheld"
+    ],
+    "hydration": [
+      "hdx"
+    ],
+    "hyperliquid": [
+      "hype"
+    ],
+    "idrt": [
+      "idrt"
+    ],
+    "idrx": [
+      "idrx"
+    ],
+    "illuvium": [
+      "ilv"
+    ],
+    "immutable_x": [
+      "imx"
+    ],
+    "injective": [
+      "inj"
+    ],
+    "ink": [
+      "ink"
+    ],
+    "internet-computer": [
+      "icp"
+    ],
+    "iota": [
+      "iota"
+    ],
+    "iotex": [
+      "iotx"
+    ],
+    "jasmy": [
+      "jasmy"
+    ],
+    "jito": [
+      "jto"
+    ],
+    "jupiter": [
+      "jup"
+    ],
+    "kaia": [
+      "kaia"
+    ],
+    "kamino": [
+      "kmno"
+    ],
+    "karura": [
+      "kar"
+    ],
+    "kava": [
+      "kava"
+    ],
+    "kelp_dao": [
+      "kep"
+    ],
+    "ktx_finance": [
+      "ktc"
+    ],
+    "kucoin": [
+      "kcs"
+    ],
+    "layerzero": [
+      "zro"
+    ],
+    "leotoken": [
+      "leo"
+    ],
+    "lido": [
+      "ldo"
+    ],
+    "lifinity": [
+      "lifinity"
+    ],
+    "lightlink": [
+      "ll"
+    ],
+    "linea": [
+      "linea"
+    ],
+    "liquity": [
+      "lqty"
+    ],
+    "lisk": [
+      "lsk"
+    ],
+    "lisusd": [
+      "lisusd"
+    ],
+    "litecoin": [
+      "ltc"
+    ],
+    "lusd": [
+      "lusd"
+    ],
+    "lvlusd": [
+      "lvlusd"
+    ],
+    "magiceden": [
+      "me"
+    ],
+    "maker": [
+      "mkr"
+    ],
+    "manta": [
+      "manta"
+    ],
+    "mantle": [
+      "mnt"
+    ],
+    "marinade": [
+      "mnde"
+    ],
+    "merit-circle": [
+      "mc"
+    ],
+    "metaplex": [
+      "mplx"
+    ],
+    "meteora": [
+      "meteora"
+    ],
+    "metis": [
+      "metis"
+    ],
+    "mim": [
+      "mim"
+    ],
+    "mines-of-dalarnia": [
+      "dar"
+    ],
+    "monero": [
+      "xmr"
+    ],
+    "moonbeam": [
+      "glmr"
+    ],
+    "moonriver": [
+      "movr"
+    ],
+    "moonwell": [
+      "well"
+    ],
+    "morpho": [
+      "morpho"
+    ],
+    "movement": [
+      "move"
+    ],
+    "multiversx": [
+      "egld"
+    ],
+    "mux": [
+      "mcb"
+    ],
+    "mythos": [
+      "myth"
+    ],
+    "near": [
+      "near"
+    ],
+    "neo": [
+      "neo"
+    ],
+    "neon": [
+      "neon"
+    ],
+    "neuroweb": [
+      "neuro"
+    ],
+    "nexo": [
+      "nexo"
+    ],
+    "nova": [
+      "nova"
+    ],
+    "oasis": [
+      "rose"
+    ],
+    "okb": [
+      "okb"
+    ],
+    "ondo": [
+      "ondo"
+    ],
+    "onyxcoin": [
+      "xcn"
+    ],
+    "openeden": [
+      "openeden"
+    ],
+    "optimism": [
+      "op"
+    ],
+    "orca": [
+      "orca"
+    ],
+    "osmosis": [
+      "osmo"
+    ],
+    "outerlands": [
+      "olfu"
+    ],
+    "pancakeswap": [
+      "cake"
+    ],
+    "paxgold": [
+      "paxg"
+    ],
+    "paxos": [
+      "paxos"
+    ],
+    "paypal": [
+      "paypal"
+    ],
+    "pendle": [
+      "pendle"
+    ],
+    "pepe": [
+      "pepe"
+    ],
+    "perpetual-protocol": [
+      "perp"
+    ],
+    "pi_network": [
+      "pi"
+    ],
+    "polkadot": [
+      "dot"
+    ],
+    "polygon": [
+      "matic"
+    ],
+    "polymarket": [
+      "polymarket"
+    ],
+    "pudgypenguins": [
+      "pengu"
+    ],
+    "puffer_finance": [
+      "puffer"
+    ],
+    "pumpfun": [
+      "pumpfun"
+    ],
+    "pyth": [
+      "pyth"
+    ],
+    "pyusd": [
+      "pyusd"
+    ],
+    "quant_network": [
+      "qnt"
+    ],
+    "quickswap": [
+      "quick"
+    ],
+    "rabbit_x": [
+      "rbx"
+    ],
+    "radiant": [
+      "rdnt"
+    ],
+    "raider-aurum": [
+      "aurum"
+    ],
+    "rainbow_bridge": [
+      "rainbow_bridge"
+    ],
+    "rainbow-token": [
+      "rbw"
+    ],
+    "raydium": [
+      "ray"
+    ],
+    "redstone": [
+      "red"
+    ],
+    "ref_finance": [
+      "ref"
+    ],
+    "remittance": [
+      "remittance"
+    ],
+    "render": [
+      "render"
+    ],
+    "renzo_protocol": [
+      "rez"
+    ],
+    "reserve": [
+      "rsr"
+    ],
+    "ripple": [
+      "xrp"
+    ],
+    "rlusd": [
+      "rlusd"
+    ],
+    "rocketpool": [
+      "rpl"
+    ],
+    "ronin": [
+      "ron"
+    ],
+    "safe": [
+      "safe"
+    ],
+    "save": [
+      "save"
+    ],
+    "scroll": [
+      "scroll"
+    ],
+    "seamlessprotocol": [
+      "seam"
+    ],
+    "sei": [
+      "sei"
+    ],
+    "shiba_inu": [
+      "shiba"
+    ],
+    "solana": [
+      "sol"
+    ],
+    "solayer": [
+      "layer"
+    ],
+    "soneium": [
+      "soneium"
+    ],
+    "sonic": [
+      "s"
+    ],
+    "sonne_finance": [
+      "sonne"
+    ],
+    "spark": [
+      "spark"
+    ],
+    "spiko": [
+      "spiko"
+    ],
+    "splinterlands": [
+      "sps"
+    ],
+    "stacks": [
+      "stx"
+    ],
+    "stader": [
+      "sd"
+    ],
+    "stakewise": [
+      "swise"
+    ],
+    "star-atlas": [
+      "atlas"
+    ],
+    "star-atlas-dao": [
+      "polis"
+    ],
+    "stargate": [
+      "stg"
+    ],
+    "starknet": [
+      "strk"
+    ],
+    "stellar": [
+      "xlm"
+    ],
+    "story": [
+      "ip"
+    ],
+    "stride": [
+      "strd"
+    ],
+    "sui": [
+      "sui"
+    ],
+    "superstate": [
+      "superstate"
+    ],
+    "s_usd": [
+      "s_usd"
+    ],
+    "susd": [
+      "susd"
+    ],
+    "sushiswap": [
+      "sushi"
+    ],
+    "swell": [
+      "swell"
+    ],
+    "synthetix": [
+      "snx"
+    ],
+    "syrup": [
+      "syrup"
+    ],
+    "telcoin": [
+      "tel"
+    ],
+    "terra": [
+      "lunc"
+    ],
+    "terra2": [
+      "luna"
+    ],
+    "tether": [
+      "tether"
+    ],
+    "tethergold": [
+      "xaut"
+    ],
+    "tezos": [
+      "xtz"
+    ],
+    "the_graph": [
+      "grt"
+    ],
+    "the-sandbox": [
+      "sand"
+    ],
+    "theta": [
+      "theta"
+    ],
+    "ton": [
+      "ton"
+    ],
+    "total": [
+      "total"
+    ],
+    "trader_joe": [
+      "joe"
+    ],
+    "tron": [
+      "trx"
+    ],
+    "trump": [
+      "trump"
+    ],
+    "tryb": [
+      "tryb"
+    ],
+    "turbo": [
+      "turbo"
+    ],
+    "tusd": [
+      "tusd"
+    ],
+    "unichain": [
+      "unichain"
+    ],
+    "unicorn-milk": [
+      "unim"
+    ],
+    "uniswap": [
+      "uni"
+    ],
+    "usd0": [
+      "usd0"
+    ],
+    "usd3": [
+      "usd3"
+    ],
+    "usda": [
+      "usda"
+    ],
+    "usdc": [
+      "usdc"
+    ],
+    "usdd": [
+      "usdd"
+    ],
+    "usde": [
+      "usde"
+    ],
+    "usdf": [
+      "usdf"
+    ],
+    "usdfalcon": [
+      "usdfalcon"
+    ],
+    "usdg": [
+      "usdg"
+    ],
+    "usdglo": [
+      "usdglo"
+    ],
+    "usdp": [
+      "usdp"
+    ],
+    "usds": [
+      "usds"
+    ],
+    "usd_star": [
+      "usd*"
+    ],
+    "usdt": [
+      "usdt"
+    ],
+    "usdtb": [
+      "usdtb"
+    ],
+    "usdx": [
+      "usdx"
+    ],
+    "usdy": [
+      "usdy"
+    ],
+    "usdz": [
+      "usdz"
+    ],
+    "usn": [
+      "usn"
+    ],
+    "usr": [
+      "usr"
+    ],
+    "usual": [
+      "usual"
+    ],
+    "uwulend": [
+      "uwu"
+    ],
+    "vechain": [
+      "vet"
+    ],
+    "venus": [
+      "xvs"
+    ],
+    "vertex": [
+      "vrtx"
+    ],
+    "virtuals": [
+      "virtual"
+    ],
+    "visa": [
+      "visa"
+    ],
+    "walrus": [
+      "wal"
+    ],
+    "whitebit": [
+      "wbt"
+    ],
+    "wif": [
+      "wif"
+    ],
+    "wisdomtree": [
+      "wt"
+    ],
+    "worldchain": [
+      "wld"
+    ],
+    "wormhole": [
+      "w"
+    ],
+    "xdc_network": [
+      "xdc"
+    ],
+    "xlayer": [
+      "xlayer"
+    ],
+    "yield-guild-games": [
+      "ygg"
+    ],
+    "zcash": [
+      "zec"
+    ],
+    "zircuit": [
+      "zrc"
+    ],
+    "zksync": [
+      "zk"
+    ],
+    "zora": [
+      "zora"
+    ]
+  },
+  "symbol_to_artemis_id": {
+    "aave": "aave",
+    "abstract": "abstract",
+    "aca": "acala",
+    "ach": "ach",
+    "acx": "across",
+    "aero": "aerodrome",
+    "aeur": "aeur",
+    "aevo": "aevo",
+    "aioz": "aioz",
+    "akt": "akash",
+    "algo": "algorand",
+    "altcoin": "altcoin",
+    "angle_usd": "angle_usd",
+    "apex": "apex",
+    "apt": "aptos",
+    "arb": "arbitrum",
+    "ar": "arweave",
+    "astr": "astar",
+    "aury": "aurory",
+    "ausd": "ausd",
+    "avax": "avalanche",
+    "avantis": "avantis",
+    "axl": "axelar",
+    "axs": "axie-infinity",
+    "baby": "babylon",
+    "bal": "balancer",
+    "banana": "bananagun",
+    "base": "base",
+    "beam": "beam",
+    "bedrock": "bedrock",
+    "bdx": "beldex",
+    "qi": "benqi_finance",
+    "bera": "berachain",
+    "bnc": "bifrost",
+    "btc": "bitcoin",
+    "bch": "bitcoin_cash",
+    "bsv": "bitcoin_sv",
+    "bgb": "bitget",
+    "bitpay": "bitpay",
+    "brock": "bitrock",
+    "tao": "bittensor",
+    "btt": "bittorrent",
+    "blk": "blackrock",
+    "blast": "blast",
+    "blue": "bluefin",
+    "blur": "blur",
+    "bob": "bob",
+    "boba": "boba",
+    "bold": "bold",
+    "bonk": "bonk",
+    "brett": "brett",
+    "brla": "brla",
+    "bnb": "bsc",
+    "busd": "busd",
+    "canto": "canto",
+    "ada": "cardano",
+    "cctp": "cctp",
+    "tia": "celestia",
+    "celo": "celo",
+    "cfg": "centrifuge",
+    "ceur": "ceur",
+    "cgusd": "cgusd",
+    "link": "chainlink",
+    "chz": "chiliz",
+    "ckes": "ckes",
+    "coin": "coinbase",
+    "cd20": "coindesk_20",
+    "comp": "compound",
+    "cfx": "conflux",
+    "cvx": "convex",
+    "core": "core",
+    "corn": "corn",
+    "cosmos_ecosystem": "cosmos_ecosystem",
+    "atom": "cosmoshub",
+    "creal": "creal",
+    "cro": "cronos",
+    "zkcro": "cronos_zkevm",
+    "xfi": "crossfi",
+    "crvusd": "crvusd",
+    "raider": "crypto-raiders",
+    "crv": "curve",
+    "cusd": "cusd",
+    "cypher": "cypher",
+    "dai": "dai",
+    "dbr": "debridge",
+    "mana": "decentraland",
+    "dg": "decentral-games",
+    "deep": "deepbook",
+    "jewel": "defi-kingdoms",
+    "crystal": "defi-kingdoms-crystal",
+    "deusd": "deusd",
+    "alot": "dexalot",
+    "dexe": "dexe",
+    "dfk": "dfk",
+    "doge": "dogecoin",
+    "dola": "dola",
+    "drift": "drift",
+    "dydx": "dydx",
+    "dydx_v4": "dydx_v4",
+    "xec": "ecash",
+    "eigen": "eigenlayer",
+    "egp": "eigenpie",
+    "ens": "ens",
+    "eos": "eos",
+    "ena": "ethena",
+    "eth": "ethereum",
+    "etc": "ethereum_classic",
+    "ethfi": "etherfi",
+    "eul": "euler",
+    "eura": "eura",
+    "eurc": "eurc",
+    "eurs": "eurs",
+    "eurt": "eurt",
+    "exactly": "exactly",
+    "ftm": "fantom",
+    "fart": "fartcoin",
+    "ftn": "fasttoken",
+    "fdusd": "fdusd",
+    "fed_funds": "fed_funds",
+    "fedwire": "fedwire",
+    "fet": "fetch",
+    "fil": "filecoin",
+    "flr": "flare",
+    "flexusd": "flexusd",
+    "floki": "floki",
+    "flow": "flow",
+    "ben": "franklin_templeton",
+    "fxs": "frax",
+    "frax": "frax_usd",
+    "frqcy": "frequency",
+    "frxusd": "frxusd",
+    "fuse": "fuse",
+    "fxusd": "fxusd",
+    "gns": "gains-network",
+    "gala": "gala",
+    "gt": "gate",
+    "geod": "geodnet",
+    "gho": "gho",
+    "gmx": "gmx",
+    "gno": "gnosis",
+    "gnosispay": "gnosispay",
+    "gods": "gods-unchained",
+    "gfi": "goldfinch",
+    "grass": "grass",
+    "gog": "guild-of-guardians",
+    "gusd": "gusd",
+    "hashnote": "hashnote",
+    "hbar": "hedera",
+    "hnt": "helium",
+    "honey": "hivemapper",
+    "hold": "holdstation",
+    "holyheld": "holyheld",
+    "hdx": "hydration",
+    "hype": "hyperliquid",
+    "idrt": "idrt",
+    "idrx": "idrx",
+    "ilv": "illuvium",
+    "imx": "immutable_x",
+    "inj": "injective",
+    "ink": "ink",
+    "icp": "internet-computer",
+    "iota": "iota",
+    "iotx": "iotex",
+    "jasmy": "jasmy",
+    "jto": "jito",
+    "jup": "jupiter",
+    "kaia": "kaia",
+    "kmno": "kamino",
+    "kar": "karura",
+    "kava": "kava",
+    "kep": "kelp_dao",
+    "ktc": "ktx_finance",
+    "kcs": "kucoin",
+    "zro": "layerzero",
+    "leo": "leotoken",
+    "ldo": "lido",
+    "lifinity": "lifinity",
+    "ll": "lightlink",
+    "linea": "linea",
+    "lqty": "liquity",
+    "lsk": "lisk",
+    "lisusd": "lisusd",
+    "ltc": "litecoin",
+    "lusd": "lusd",
+    "lvlusd": "lvlusd",
+    "me": "magiceden",
+    "mkr": "maker",
+    "manta": "manta",
+    "mnt": "mantle",
+    "mnde": "marinade",
+    "mc": "merit-circle",
+    "mplx": "metaplex",
+    "meteora": "meteora",
+    "metis": "metis",
+    "mim": "mim",
+    "dar": "mines-of-dalarnia",
+    "xmr": "monero",
+    "glmr": "moonbeam",
+    "movr": "moonriver",
+    "well": "moonwell",
+    "morpho": "morpho",
+    "move": "movement",
+    "egld": "multiversx",
+    "mcb": "mux",
+    "myth": "mythos",
+    "near": "near",
+    "neo": "neo",
+    "neon": "neon",
+    "neuro": "neuroweb",
+    "nexo": "nexo",
+    "nova": "nova",
+    "rose": "oasis",
+    "okb": "okb",
+    "ondo": "ondo",
+    "xcn": "onyxcoin",
+    "openeden": "openeden",
+    "op": "optimism",
+    "orca": "orca",
+    "osmo": "osmosis",
+    "olfu": "outerlands",
+    "cake": "pancakeswap",
+    "paxg": "paxgold",
+    "paxos": "paxos",
+    "paypal": "paypal",
+    "pendle": "pendle",
+    "pepe": "pepe",
+    "perp": "perpetual-protocol",
+    "pi": "pi_network",
+    "dot": "polkadot",
+    "matic": "polygon",
+    "polymarket": "polymarket",
+    "pengu": "pudgypenguins",
+    "puffer": "puffer_finance",
+    "pumpfun": "pumpfun",
+    "pyth": "pyth",
+    "pyusd": "pyusd",
+    "qnt": "quant_network",
+    "quick": "quickswap",
+    "rbx": "rabbit_x",
+    "rdnt": "radiant",
+    "aurum": "raider-aurum",
+    "rainbow_bridge": "rainbow_bridge",
+    "rbw": "rainbow-token",
+    "ray": "raydium",
+    "red": "redstone",
+    "ref": "ref_finance",
+    "remittance": "remittance",
+    "render": "render",
+    "rez": "renzo_protocol",
+    "rsr": "reserve",
+    "xrp": "ripple",
+    "rlusd": "rlusd",
+    "rpl": "rocketpool",
+    "ron": "ronin",
+    "safe": "safe",
+    "save": "save",
+    "scroll": "scroll",
+    "seam": "seamlessprotocol",
+    "sei": "sei",
+    "shiba": "shiba_inu",
+    "sol": "solana",
+    "layer": "solayer",
+    "soneium": "soneium",
+    "s": "sonic",
+    "sonne": "sonne_finance",
+    "spark": "spark",
+    "spiko": "spiko",
+    "sps": "splinterlands",
+    "stx": "stacks",
+    "sd": "stader",
+    "swise": "stakewise",
+    "atlas": "star-atlas",
+    "polis": "star-atlas-dao",
+    "stg": "stargate",
+    "strk": "starknet",
+    "xlm": "stellar",
+    "ip": "story",
+    "strd": "stride",
+    "sui": "sui",
+    "superstate": "superstate",
+    "s_usd": "s_usd",
+    "susd": "susd",
+    "sushi": "sushiswap",
+    "swell": "swell",
+    "snx": "synthetix",
+    "syrup": "syrup",
+    "tel": "telcoin",
+    "lunc": "terra",
+    "luna": "terra2",
+    "tether": "tether",
+    "xaut": "tethergold",
+    "xtz": "tezos",
+    "grt": "the_graph",
+    "sand": "the-sandbox",
+    "theta": "theta",
+    "ton": "ton",
+    "total": "total",
+    "joe": "trader_joe",
+    "trx": "tron",
+    "trump": "trump",
+    "tryb": "tryb",
+    "turbo": "turbo",
+    "tusd": "tusd",
+    "unichain": "unichain",
+    "unim": "unicorn-milk",
+    "uni": "uniswap",
+    "usd0": "usd0",
+    "usd3": "usd3",
+    "usda": "usda",
+    "usdc": "usdc",
+    "usdd": "usdd",
+    "usde": "usde",
+    "usdf": "usdf",
+    "usdfalcon": "usdfalcon",
+    "usdg": "usdg",
+    "usdglo": "usdglo",
+    "usdp": "usdp",
+    "usds": "usds",
+    "usd*": "usd_star",
+    "usdt": "usdt",
+    "usdtb": "usdtb",
+    "usdx": "usdx",
+    "usdy": "usdy",
+    "usdz": "usdz",
+    "usn": "usn",
+    "usr": "usr",
+    "usual": "usual",
+    "uwu": "uwulend",
+    "vet": "vechain",
+    "xvs": "venus",
+    "vrtx": "vertex",
+    "virtual": "virtuals",
+    "visa": "visa",
+    "wal": "walrus",
+    "wbt": "whitebit",
+    "wif": "wif",
+    "wt": "wisdomtree",
+    "wld": "worldchain",
+    "w": "wormhole",
+    "xdc": "xdc_network",
+    "xlayer": "xlayer",
+    "ygg": "yield-guild-games",
+    "zec": "zcash",
+    "zrc": "zircuit",
+    "zk": "zksync",
+    "zora": "zora"
+  },
+  "artemis_id_to_type": {
+    "aave": "application",
+    "abstract": "chain",
+    "acala": "chain",
+    "ach": "application",
+    "across": "application",
+    "aerodrome": "application",
+    "aeur": "application",
+    "aevo": "application",
+    "aioz": "application",
+    "akash": "application",
+    "algorand": "chain",
+    "altcoin": "application",
+    "angle_usd": "application",
+    "apex": "application",
+    "aptos": "chain",
+    "arbitrum": "chain",
+    "arweave": "chain",
+    "astar": "chain",
+    "aurory": "application",
+    "ausd": "application",
+    "avalanche": "chain",
+    "avantis": "application",
+    "axelar": "chain",
+    "axie-infinity": "application",
+    "babylon": "application",
+    "balancer": "application",
+    "bananagun": "application",
+    "base": "chain",
+    "beam": "chain",
+    "bedrock": "application",
+    "beldex": "application",
+    "benqi_finance": "application",
+    "berachain": "chain",
+    "bifrost": "chain",
+    "bitcoin": "chain",
+    "bitcoin_cash": "chain",
+    "bitcoin_sv": "application",
+    "bitget": "application",
+    "bitpay": "application",
+    "bitrock": "application",
+    "bittensor": "chain",
+    "bittorrent": "application",
+    "blackrock": "application",
+    "blast": "chain",
+    "bluefin": "application",
+    "blur": "application",
+    "bob": "chain",
+    "boba": "application",
+    "bold": "application",
+    "bonk": "application",
+    "brett": "application",
+    "brla": "application",
+    "bsc": "chain",
+    "busd": "application",
+    "canto": "chain",
+    "cardano": "chain",
+    "cctp": "application",
+    "celestia": "application",
+    "celo": "chain",
+    "centrifuge": "application",
+    "ceur": "application",
+    "cgusd": "application",
+    "chainlink": "application",
+    "chiliz": "chain",
+    "ckes": "application",
+    "coinbase": "application",
+    "coindesk_20": "application",
+    "compound": "application",
+    "conflux": "chain",
+    "convex": "application",
+    "core": "application",
+    "corn": "application",
+    "cosmos_ecosystem": "application",
+    "cosmoshub": "chain",
+    "creal": "application",
+    "cronos": "chain",
+    "cronos_zkevm": "chain",
+    "crossfi": "chain",
+    "crvusd": "application",
+    "crypto-raiders": "application",
+    "curve": "application",
+    "cusd": "application",
+    "cypher": "application",
+    "dai": "application",
+    "debridge": "application",
+    "decentraland": "application",
+    "decentral-games": "application",
+    "deepbook": "application",
+    "defi-kingdoms": "chain",
+    "defi-kingdoms-crystal": "application",
+    "deusd": "application",
+    "dexalot": "chain",
+    "dexe": "application",
+    "dfk": "application",
+    "dogecoin": "chain",
+    "dola": "application",
+    "drift": "application",
+    "dydx": "application",
+    "dydx_v4": "application",
+    "ecash": "application",
+    "eigenlayer": "application",
+    "eigenpie": "application",
+    "ens": "application",
+    "eos": "chain",
+    "ethena": "application",
+    "ethereum": "chain",
+    "ethereum_classic": "chain",
+    "etherfi": "application",
+    "euler": "application",
+    "eura": "application",
+    "eurc": "application",
+    "eurs": "application",
+    "eurt": "application",
+    "exactly": "application",
+    "fantom": "chain",
+    "fartcoin": "application",
+    "fasttoken": "application",
+    "fdusd": "application",
+    "fed_funds": "application",
+    "fedwire": "application",
+    "fetch": "chain",
+    "filecoin": "application",
+    "flare": "chain",
+    "flexusd": "application",
+    "floki": "application",
+    "flow": "chain",
+    "franklin_templeton": "application",
+    "frax": "application",
+    "frax_usd": "application",
+    "frequency": "chain",
+    "frxusd": "application",
+    "fuse": "chain",
+    "fxusd": "application",
+    "gains-network": "application",
+    "gala": "application",
+    "gate": "application",
+    "geodnet": "application",
+    "gho": "application",
+    "gmx": "application",
+    "gnosis": "chain",
+    "gnosispay": "application",
+    "gods-unchained": "application",
+    "goldfinch": "application",
+    "grass": "application",
+    "guild-of-guardians": "application",
+    "gusd": "application",
+    "hashnote": "application",
+    "hedera": "chain",
+    "helium": "application",
+    "hivemapper": "application",
+    "holdstation": "application",
+    "holyheld": "application",
+    "hydration": "application",
+    "hyperliquid": "application",
+    "idrt": "application",
+    "idrx": "application",
+    "illuvium": "application",
+    "immutable_x": "chain",
+    "injective": "chain",
+    "ink": "chain",
+    "internet-computer": "chain",
+    "iota": "application",
+    "iotex": "chain",
+    "jasmy": "application",
+    "jito": "application",
+    "jupiter": "application",
+    "kaia": "application",
+    "kamino": "application",
+    "karura": "chain",
+    "kava": "chain",
+    "kelp_dao": "application",
+    "ktx_finance": "application",
+    "kucoin": "application",
+    "layerzero": "application",
+    "leotoken": "application",
+    "lido": "application",
+    "lifinity": "application",
+    "lightlink": "chain",
+    "linea": "chain",
+    "liquity": "application",
+    "lisk": "chain",
+    "lisusd": "application",
+    "litecoin": "chain",
+    "lusd": "application",
+    "lvlusd": "application",
+    "magiceden": "application",
+    "maker": "application",
+    "manta": "chain",
+    "mantle": "chain",
+    "marinade": "application",
+    "merit-circle": "application",
+    "metaplex": "application",
+    "meteora": "application",
+    "metis": "chain",
+    "mim": "application",
+    "mines-of-dalarnia": "application",
+    "monero": "chain",
+    "moonbeam": "chain",
+    "moonriver": "chain",
+    "moonwell": "application",
+    "morpho": "application",
+    "movement": "application",
+    "multiversx": "chain",
+    "mux": "application",
+    "mythos": "application",
+    "near": "chain",
+    "neo": "chain",
+    "neon": "application",
+    "neuroweb": "application",
+    "nexo": "application",
+    "nova": "application",
+    "oasis": "chain",
+    "okb": "application",
+    "ondo": "application",
+    "onyxcoin": "application",
+    "openeden": "application",
+    "optimism": "chain",
+    "orca": "application",
+    "osmosis": "chain",
+    "outerlands": "application",
+    "pancakeswap": "application",
+    "paxgold": "application",
+    "paxos": "application",
+    "paypal": "application",
+    "pendle": "application",
+    "pepe": "application",
+    "perpetual-protocol": "application",
+    "pi_network": "chain",
+    "polkadot": "chain",
+    "polygon": "chain",
+    "polymarket": "application",
+    "pudgypenguins": "application",
+    "puffer_finance": "application",
+    "pumpfun": "application",
+    "pyth": "application",
+    "pyusd": "application",
+    "quant_network": "application",
+    "quickswap": "application",
+    "rabbit_x": "application",
+    "radiant": "application",
+    "raider-aurum": "application",
+    "rainbow_bridge": "application",
+    "rainbow-token": "application",
+    "raydium": "application",
+    "redstone": "application",
+    "ref_finance": "application",
+    "remittance": "application",
+    "render": "application",
+    "renzo_protocol": "application",
+    "reserve": "application",
+    "ripple": "chain",
+    "rlusd": "application",
+    "rocketpool": "application",
+    "ronin": "application",
+    "safe": "application",
+    "save": "application",
+    "scroll": "chain",
+    "seamlessprotocol": "application",
+    "sei": "chain",
+    "shiba_inu": "application",
+    "solana": "chain",
+    "solayer": "application",
+    "soneium": "chain",
+    "sonic": "chain",
+    "sonne_finance": "application",
+    "spark": "application",
+    "spiko": "application",
+    "splinterlands": "application",
+    "stacks": "chain",
+    "stader": "application",
+    "stakewise": "application",
+    "star-atlas": "application",
+    "star-atlas-dao": "application",
+    "stargate": "application",
+    "starknet": "chain",
+    "stellar": "chain",
+    "story": "chain",
+    "stride": "chain",
+    "sui": "chain",
+    "superstate": "application",
+    "s_usd": "application",
+    "susd": "application",
+    "sushiswap": "application",
+    "swell": "application",
+    "synthetix": "application",
+    "syrup": "application",
+    "telcoin": "chain",
+    "terra": "chain",
+    "terra2": "chain",
+    "tether": "application",
+    "tethergold": "application",
+    "tezos": "chain",
+    "the_graph": "application",
+    "the-sandbox": "application",
+    "theta": "application",
+    "ton": "chain",
+    "total": "application",
+    "trader_joe": "application",
+    "tron": "chain",
+    "trump": "application",
+    "tryb": "application",
+    "turbo": "application",
+    "tusd": "application",
+    "unichain": "chain",
+    "unicorn-milk": "application",
+    "uniswap": "application",
+    "usd0": "application",
+    "usd3": "application",
+    "usda": "application",
+    "usdc": "application",
+    "usdd": "application",
+    "usde": "application",
+    "usdf": "application",
+    "usdfalcon": "application",
+    "usdg": "application",
+    "usdglo": "application",
+    "usdp": "application",
+    "usds": "application",
+    "usd_star": "application",
+    "usdt": "application",
+    "usdtb": "application",
+    "usdx": "application",
+    "usdy": "application",
+    "usdz": "application",
+    "usn": "application",
+    "usr": "application",
+    "usual": "application",
+    "uwulend": "application",
+    "vechain": "chain",
+    "venus": "application",
+    "vertex": "application",
+    "virtuals": "application",
+    "visa": "application",
+    "walrus": "application",
+    "whitebit": "application",
+    "wif": "application",
+    "wisdomtree": "application",
+    "worldchain": "chain",
+    "wormhole": "application",
+    "xdc_network": "chain",
+    "xlayer": "chain",
+    "yield-guild-games": "application",
+    "zcash": "chain",
+    "zircuit": "chain",
+    "zksync": "chain",
+    "zora": "chain"
+  },
+  "symbol_to_type": {
+    "aave": "application",
+    "abstract": "chain",
+    "aca": "chain",
+    "ach": "application",
+    "acx": "application",
+    "aero": "application",
+    "aeur": "application",
+    "aevo": "application",
+    "aioz": "application",
+    "akt": "application",
+    "algo": "chain",
+    "altcoin": "application",
+    "angle_usd": "application",
+    "apex": "application",
+    "apt": "chain",
+    "arb": "chain",
+    "ar": "chain",
+    "astr": "chain",
+    "aury": "application",
+    "ausd": "application",
+    "avax": "chain",
+    "avantis": "application",
+    "axl": "chain",
+    "axs": "application",
+    "baby": "application",
+    "bal": "application",
+    "banana": "application",
+    "base": "chain",
+    "beam": "chain",
+    "bedrock": "application",
+    "bdx": "application",
+    "qi": "application",
+    "bera": "chain",
+    "bnc": "chain",
+    "btc": "chain",
+    "bch": "chain",
+    "bsv": "application",
+    "bgb": "application",
+    "bitpay": "application",
+    "brock": "application",
+    "tao": "chain",
+    "btt": "application",
+    "blk": "application",
+    "blast": "chain",
+    "blue": "application",
+    "blur": "application",
+    "bob": "chain",
+    "boba": "application",
+    "bold": "application",
+    "bonk": "application",
+    "brett": "application",
+    "brla": "application",
+    "bnb": "chain",
+    "busd": "application",
+    "canto": "chain",
+    "ada": "chain",
+    "cctp": "application",
+    "tia": "application",
+    "celo": "chain",
+    "cfg": "application",
+    "ceur": "application",
+    "cgusd": "application",
+    "link": "application",
+    "chz": "chain",
+    "ckes": "application",
+    "coin": "application",
+    "cd20": "application",
+    "comp": "application",
+    "cfx": "chain",
+    "cvx": "application",
+    "core": "application",
+    "corn": "application",
+    "cosmos_ecosystem": "application",
+    "atom": "chain",
+    "creal": "application",
+    "cro": "chain",
+    "zkcro": "chain",
+    "xfi": "chain",
+    "crvusd": "application",
+    "raider": "application",
+    "crv": "application",
+    "cusd": "application",
+    "cypher": "application",
+    "dai": "application",
+    "dbr": "application",
+    "mana": "application",
+    "dg": "application",
+    "deep": "application",
+    "jewel": "chain",
+    "crystal": "application",
+    "deusd": "application",
+    "alot": "chain",
+    "dexe": "application",
+    "dfk": "application",
+    "doge": "chain",
+    "dola": "application",
+    "drift": "application",
+    "dydx": "application",
+    "dydx_v4": "application",
+    "xec": "application",
+    "eigen": "application",
+    "egp": "application",
+    "ens": "application",
+    "eos": "chain",
+    "ena": "application",
+    "eth": "chain",
+    "etc": "chain",
+    "ethfi": "application",
+    "eul": "application",
+    "eura": "application",
+    "eurc": "application",
+    "eurs": "application",
+    "eurt": "application",
+    "exactly": "application",
+    "ftm": "chain",
+    "fart": "application",
+    "ftn": "application",
+    "fdusd": "application",
+    "fed_funds": "application",
+    "fedwire": "application",
+    "fet": "chain",
+    "fil": "application",
+    "flr": "chain",
+    "flexusd": "application",
+    "floki": "application",
+    "flow": "chain",
+    "ben": "application",
+    "fxs": "application",
+    "frax": "application",
+    "frqcy": "chain",
+    "frxusd": "application",
+    "fuse": "chain",
+    "fxusd": "application",
+    "gns": "application",
+    "gala": "application",
+    "gt": "application",
+    "geod": "application",
+    "gho": "application",
+    "gmx": "application",
+    "gno": "chain",
+    "gnosispay": "application",
+    "gods": "application",
+    "gfi": "application",
+    "grass": "application",
+    "gog": "application",
+    "gusd": "application",
+    "hashnote": "application",
+    "hbar": "chain",
+    "hnt": "application",
+    "honey": "application",
+    "hold": "application",
+    "holyheld": "application",
+    "hdx": "application",
+    "hype": "application",
+    "idrt": "application",
+    "idrx": "application",
+    "ilv": "application",
+    "imx": "chain",
+    "inj": "chain",
+    "ink": "chain",
+    "icp": "chain",
+    "iota": "application",
+    "iotx": "chain",
+    "jasmy": "application",
+    "jto": "application",
+    "jup": "application",
+    "kaia": "application",
+    "kmno": "application",
+    "kar": "chain",
+    "kava": "chain",
+    "kep": "application",
+    "ktc": "application",
+    "kcs": "application",
+    "zro": "application",
+    "leo": "application",
+    "ldo": "application",
+    "lifinity": "application",
+    "ll": "chain",
+    "linea": "chain",
+    "lqty": "application",
+    "lsk": "chain",
+    "lisusd": "application",
+    "ltc": "chain",
+    "lusd": "application",
+    "lvlusd": "application",
+    "me": "application",
+    "mkr": "application",
+    "manta": "chain",
+    "mnt": "chain",
+    "mnde": "application",
+    "mc": "application",
+    "mplx": "application",
+    "meteora": "application",
+    "metis": "chain",
+    "mim": "application",
+    "dar": "application",
+    "xmr": "chain",
+    "glmr": "chain",
+    "movr": "chain",
+    "well": "application",
+    "morpho": "application",
+    "move": "application",
+    "egld": "chain",
+    "mcb": "application",
+    "myth": "application",
+    "near": "chain",
+    "neo": "chain",
+    "neon": "application",
+    "neuro": "application",
+    "nexo": "application",
+    "nova": "application",
+    "rose": "chain",
+    "okb": "application",
+    "ondo": "application",
+    "xcn": "application",
+    "openeden": "application",
+    "op": "chain",
+    "orca": "application",
+    "osmo": "chain",
+    "olfu": "application",
+    "cake": "application",
+    "paxg": "application",
+    "paxos": "application",
+    "paypal": "application",
+    "pendle": "application",
+    "pepe": "application",
+    "perp": "application",
+    "pi": "chain",
+    "dot": "chain",
+    "matic": "chain",
+    "polymarket": "application",
+    "pengu": "application",
+    "puffer": "application",
+    "pumpfun": "application",
+    "pyth": "application",
+    "pyusd": "application",
+    "qnt": "application",
+    "quick": "application",
+    "rbx": "application",
+    "rdnt": "application",
+    "aurum": "application",
+    "rainbow_bridge": "application",
+    "rbw": "application",
+    "ray": "application",
+    "red": "application",
+    "ref": "application",
+    "remittance": "application",
+    "render": "application",
+    "rez": "application",
+    "rsr": "application",
+    "xrp": "chain",
+    "rlusd": "application",
+    "rpl": "application",
+    "ron": "application",
+    "safe": "application",
+    "save": "application",
+    "scroll": "chain",
+    "seam": "application",
+    "sei": "chain",
+    "shiba": "application",
+    "sol": "chain",
+    "layer": "application",
+    "soneium": "chain",
+    "s": "chain",
+    "sonne": "application",
+    "spark": "application",
+    "spiko": "application",
+    "sps": "application",
+    "stx": "chain",
+    "sd": "application",
+    "swise": "application",
+    "atlas": "application",
+    "polis": "application",
+    "stg": "application",
+    "strk": "chain",
+    "xlm": "chain",
+    "ip": "chain",
+    "strd": "chain",
+    "sui": "chain",
+    "superstate": "application",
+    "s_usd": "application",
+    "susd": "application",
+    "sushi": "application",
+    "swell": "application",
+    "snx": "application",
+    "syrup": "application",
+    "tel": "chain",
+    "lunc": "chain",
+    "luna": "chain",
+    "tether": "application",
+    "xaut": "application",
+    "xtz": "chain",
+    "grt": "application",
+    "sand": "application",
+    "theta": "application",
+    "ton": "chain",
+    "total": "application",
+    "joe": "application",
+    "trx": "chain",
+    "trump": "application",
+    "tryb": "application",
+    "turbo": "application",
+    "tusd": "application",
+    "unichain": "chain",
+    "unim": "application",
+    "uni": "application",
+    "usd0": "application",
+    "usd3": "application",
+    "usda": "application",
+    "usdc": "application",
+    "usdd": "application",
+    "usde": "application",
+    "usdf": "application",
+    "usdfalcon": "application",
+    "usdg": "application",
+    "usdglo": "application",
+    "usdp": "application",
+    "usds": "application",
+    "usd*": "application",
+    "usdt": "application",
+    "usdtb": "application",
+    "usdx": "application",
+    "usdy": "application",
+    "usdz": "application",
+    "usn": "application",
+    "usr": "application",
+    "usual": "application",
+    "uwu": "application",
+    "vet": "chain",
+    "xvs": "application",
+    "vrtx": "application",
+    "virtual": "application",
+    "visa": "application",
+    "wal": "application",
+    "wbt": "application",
+    "wif": "application",
+    "wt": "application",
+    "wld": "chain",
+    "w": "application",
+    "xdc": "chain",
+    "xlayer": "chain",
+    "ygg": "application",
+    "zec": "chain",
+    "zrc": "chain",
+    "zk": "chain",
+    "zora": "chain"
+  }
+}
