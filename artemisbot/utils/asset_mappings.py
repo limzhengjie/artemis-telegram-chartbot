@@ -1,7 +1,6 @@
 import json
 import os
 from typing import Dict, Optional, List
-from artemis import Artemis
 from config import ASSET_MAPPINGS_FILE
 
 # Global mappings dictionary
