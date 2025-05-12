@@ -73,7 +73,6 @@ def take_screenshot(url: str) -> bytes:
     chrome_options.add_argument("--disable-features=NetworkServiceInProcess18")
     chrome_options.add_argument("--disable-features=NetworkServiceInProcess19")
     chrome_options.add_argument("--disable-features=NetworkServiceInProcess20")
-    chrome_options.binary_location = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     
     driver = None
     try:
@@ -198,10 +197,7 @@ def take_screenshot(url: str) -> bytes:
             return "ERROR:INVALID_PARAMETERS"
         return f"ERROR:SCREENSHOT_FAILED - {str(e)}"
     except Exception as e:
-        return f"ERROR:CHART_ERROR - {str(e)}"
+        return f"ERROR:SCREENSHOT_FAILED - {str(e)}"
     finally:
         if driver:
-            try:
-                driver.quit()
-            except:
-                pass
+            driver.quit()
