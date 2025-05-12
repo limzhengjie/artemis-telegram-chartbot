@@ -64,8 +64,10 @@ def main():
         print("Adding handlers...")
         # Add handlers
         application.add_handler(CommandHandler("help", help_command))
-        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-        application.add_handler(MessageHandler(filters.TEXT & filters.ChatType.GROUPS, handle_group_message))
+        # Handle private messages
+        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND & filters.ChatType.PRIVATE, handle_message))
+        # Handle group messages that start with =art
+        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND & filters.ChatType.GROUPS & filters.Regex(r'^=art\s'), handle_group_message))
         
         # Start the bot
         print("Starting bot...")
