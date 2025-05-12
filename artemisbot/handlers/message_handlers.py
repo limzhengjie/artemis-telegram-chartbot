@@ -141,29 +141,39 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await process_chart_command(
             update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage
         )
-    except ValueError:
-        # Silently ignore invalid commands
-        return
+    except ValueError as e:
+        await update.message.reply_text(
+            f"Error: {str(e)}\n\n"
+            f"Format: <metric> <asset> <time_period> <granularity> [%]\n"
+            f"Example: price solana 1w 1d"
+        )
 
 
 async def handle_group_message(message: Message, bot: Bot) -> None:
     """Handle messages in group chats."""
+    print(f"Received group message: {message.text}")  # Debug log
+    
     # Only process messages that start with '=art'
     if not message.text or not message.text.strip().startswith('=art'):
+        print("Message doesn't start with =art, ignoring")  # Debug log
         return
         
     # Remove the '=art' prefix and process the command
     command_text = message.text[4:].strip()
     if not command_text:
+        print("Empty command after =art, ignoring")  # Debug log
         return
         
+    print(f"Processing command: {command_text}")  # Debug log
     parts = command_text.split()
     if len(parts) < 4:
+        print("Command too short, ignoring")  # Debug log
         return
         
     # Only process messages that start with a valid metric
     valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
     if parts[0].lower() not in valid_metrics:
+        print(f"Invalid metric: {parts[0]}")  # Debug log
         return
         
     try:
@@ -177,9 +187,13 @@ async def handle_group_message(message: Message, bot: Bot) -> None:
         await process_chart_command(
             update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
         )
-    except ValueError:
-        # Silently ignore invalid commands
-        return
+    except ValueError as e:
+        print(f"Error processing command: {str(e)}")  # Debug log
+        await message.reply_text(
+            f"Error: {str(e)}\n\n"
+            f"Format: =art <metric> <asset> <time_period> <granularity> [%]\n"
+            f"Example: =art price solana 1w 1d"
+        )
 
 
 async def welcome_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
