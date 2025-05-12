@@ -149,7 +149,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 async def handle_group_message(message: Message, bot: Bot) -> None:
     """Handle messages in group chats."""
     # Only process messages that start with '=art'
-    if not message.text or not message.text.startswith('=art'):
+    if not message.text or not message.text.strip().startswith('=art'):
         return
         
     # Remove the '=art' prefix and process the command
