@@ -107,8 +107,13 @@ async def handle_group_message(update: Update, context: ContextTypes.DEFAULT_TYP
         
     print(f"Processing command: {command_text}")  # Debug log
     parts = command_text.split()
-    if len(parts) < 4:
+    if len(parts) < 1:
         print("Command too short, ignoring")  # Debug log
+        return
+
+    # Handle news command
+    if parts[0].lower() == 'news':
+        await handle_news_command(update, context, parts[1:] if len(parts) > 1 else [])
         return
         
     # Only process messages that start with a valid metric
@@ -129,6 +134,41 @@ async def handle_group_message(update: Update, context: ContextTypes.DEFAULT_TYP
             f"Error: {str(e)}\n\n"
             f"Format: =art <metric> [vs <metric>] <asset> <time_period> <granularity> [%]\n"
             f"Example: =art price vs tvl solana 1w 1d"
+        )
+
+
+async def handle_news_command(update: Update, context: ContextTypes.DEFAULT_TYPE, args: List[str]) -> None:
+    """
+    Handle the news command to get market news summary.
+    
+    Args:
+        update: Telegram update object
+        context: Telegram context object
+        args: List of arguments (optional asset identifier)
+    """
+    status_message = await update.message.reply_text("📰 Fetching latest market news... Please wait while I analyze the data.")
+    
+    try:
+        # Get the asset identifier if provided
+        asset_id = args[0].lower() if args else None
+        
+        # Generate news summary using ChatGPT
+        from artemisbot.news.news_analyzer import NewsAnalyzer
+        news_analyzer = NewsAnalyzer()
+        summary = await news_analyzer.get_market_news(asset_id)
+        
+        # Send the news summary
+        await update.message.reply_text(
+            f"*Market News Summary*\n\n{summary}",
+            parse_mode="Markdown"
+        )
+        await status_message.delete()
+        
+    except Exception as e:
+        await status_message.delete()
+        await update.message.reply_text(
+            f"❌ Error: {str(e)}\n\n"
+            f"Please try again later."
         )
 
 
