@@ -35,9 +35,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         )
         
         # Format the caption with the analysis
-        caption = f"📊 *{title}*\n\n"
-        if analysis:
-            caption += f"*Market Analysis:*\n{analysis}\n\n"
+        caption = f"*{title}*\n\n{analysis[:100]}..."  # Truncate analysis to 100 characters
         caption += f"🔗 [View Interactive Chart]({chart_url})"
         
         # Send successful chart with analysis
