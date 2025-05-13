@@ -26,7 +26,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         is_percentage: Whether to display as percentages
         is_group: Whether this is a group chat message
     """
-    status_message = await update.message.reply_text(f"📊 Generating chart for {', '.join(metrics)} of {', '.join(tickers_raw)}... Please wait while I fetch the data and analyze it for you.")
+    status_message = await update.message.reply_text(f"📊 Generating chart for {', '.join(metrics)} of {', '.join(tickers_raw)}... \n\nPlease wait while I fetch the data and analyze it for you.")
     
     try:
         # Generate chart using ChartGenerator
@@ -34,8 +34,14 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
             metrics, tickers_raw, asset_type, time_period, granularity, is_percentage
         )
         
-        # Format the caption with the analysis
-        caption = f"*{title}*\n\n*Summary:* {analysis[:800]}...\n\n*Full Analysis:* {analysis}\n\n🔗 [View Interactive Chart]({chart_url})"
+        # Format the caption with the analysis, ensuring it never exceeds Telegram's 1024 character limit
+        max_caption_length = 1024
+        base_caption = f"*{title}*\n\n*Summary:* "
+        # Reserve space for base_caption
+        reserved = len(base_caption)
+        max_analysis_length = max_caption_length - reserved
+        safe_analysis = analysis[:max_analysis_length]
+        caption = f"{base_caption}{safe_analysis}"
         
         # Send successful chart with analysis
         await update.message.reply_photo(
