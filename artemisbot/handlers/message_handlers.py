@@ -35,7 +35,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         )
         
         # Format the caption with the analysis
-        caption = f"*{title}*\n\n*Summary:* {analysis[:500]}...\n\n*Full Analysis:* {analysis}\n\n🔗 [View Interactive Chart]({chart_url})"
+        caption = f"*{title}*\n\n*Summary:* {analysis[:800]}...\n\n*Full Analysis:* {analysis}\n\n🔗 [View Interactive Chart]({chart_url})"
         
         # Send successful chart with analysis
         await update.message.reply_photo(

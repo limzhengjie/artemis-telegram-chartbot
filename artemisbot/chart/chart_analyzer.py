@@ -39,7 +39,7 @@ def generate_chart_summary(image_path: str) -> Optional[str]:
             base64_image = base64.b64encode(image_file.read()).decode('utf-8')
         
         # Create a prompt for the chart analysis
-        prompt = f"Please provide a quick summary and macro impact analysis of this chart. Keep the response within 1024 characters to fit Telegram's caption limit."
+        prompt = "Analyze this chart and provide a concise summary and macro impact analysis. Keep the response under 800 characters."
         
         # Call OpenAI API with the image
         response = client.chat.completions.create(
@@ -81,7 +81,7 @@ def generate_chart_summary_from_bytes(image_bytes: bytes) -> Optional[str]:
     try:
         today = datetime.now().strftime("%B %d, %Y")
         base64_image = base64.b64encode(image_bytes).decode('utf-8')
-        prompt = f"Please provide a quick summary and macro impact analysis of this chart. Keep the response within 1024 characters to fit Telegram's caption limit."
+        prompt = "Analyze this chart and provide a concise summary and macro impact analysis. Keep the response under 800 characters."
         
         response = client.chat.completions.create(
             model="gpt-4o",
