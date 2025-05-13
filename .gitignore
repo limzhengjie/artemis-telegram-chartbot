@@ -50,3 +50,4 @@ htmlcov/
 # Chrome driver
 .wdm/
 chromium/
+.env

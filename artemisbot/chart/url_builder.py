@@ -1,7 +1,12 @@
 import json
 import urllib.parse
+import logging
 from typing import List
 from artemisbot.utils.asset_mappings import get_asset_by_id, get_asset_by_symbol
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def build_chart_url(metrics: List[str], tickers: List[str], asset_type: str, time_period: str, granularity: str, is_percentage: bool = False) -> str:
     """
@@ -18,6 +23,8 @@ def build_chart_url(metrics: List[str], tickers: List[str], asset_type: str, tim
     Returns:
         The complete chart URL
     """
+    logger.info(f"Building chart URL for metrics: {metrics}, tickers: {tickers}, asset_type: {asset_type}")
+    
     # Map time period to Artemis time period ID
     period_map = {
         "1w": "WEEKLY",
@@ -66,7 +73,9 @@ def build_chart_url(metrics: List[str], tickers: List[str], asset_type: str, tim
     # Get asset names for display
     asset_names = []
     for ticker in tickers:
+        logger.info(f"Looking up asset info for ticker: {ticker}")
         asset_info = get_asset_by_id(ticker) or get_asset_by_symbol(ticker)
+        logger.info(f"Asset info result: {asset_info}")
         if not asset_info:
             raise ValueError(f"Unknown asset: {ticker}")
         asset_names.append(asset_info.get("name", ticker.capitalize()))
@@ -128,7 +137,9 @@ def build_chart_url(metrics: List[str], tickers: List[str], asset_type: str, tim
             raise ValueError(f"Invalid metric: {metric}")
             
         for ticker in tickers:
+            logger.info(f"Looking up asset info for series: {ticker}")
             asset_info = get_asset_by_id(ticker) or get_asset_by_symbol(ticker)
+            logger.info(f"Asset info result for series: {asset_info}")
             if not asset_info:
                 raise ValueError(f"Unknown asset: {ticker}")
                 
@@ -163,4 +174,5 @@ def build_chart_url(metrics: List[str], tickers: List[str], asset_type: str, tim
     encoded_config = urllib.parse.quote(json.dumps(chart_config))
     url = f"https://app.artemisanalytics.com/chart-builder/{encoded_config}"
     
+    logger.info(f"Generated URL: {url}")
     return url

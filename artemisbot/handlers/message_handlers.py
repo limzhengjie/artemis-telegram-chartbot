@@ -2,10 +2,11 @@ from typing import List
 from telegram import Update, Message, Bot
 from telegram.ext import ContextTypes
 from artemisbot.utils.command_parser import parse_command
-from artemisbot.chart.url_builder import build_chart_url
-from artemisbot.chart.screenshot import take_screenshot
-from artemisbot.utils.asset_mappings import get_asset_by_id, get_asset_by_symbol
+from artemisbot.chart.chart_generator import ChartGenerator
+import logging
 
+# Initialize ChartGenerator
+chart_generator = ChartGenerator()
 
 async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TYPE, 
                       metrics: List[str], tickers_raw: List[str], asset_type: str, 
@@ -25,96 +26,31 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         is_percentage: Whether to display as percentages
         is_group: Whether this is a group chat message
     """
-    # Get asset names for display
-    asset_names = []
-    for ticker in tickers_raw:
-        asset_info = get_asset_by_id(ticker) or get_asset_by_symbol(ticker)
-        asset_names.append(asset_info["name"] if asset_info and "name" in asset_info else ticker.capitalize())
-    
-    ticker_display = "/".join(asset_names)
-    
-    # Create a readable title
-    metric_display = {
-        "price": "Price",
-        "volume": "Volume",
-        "tvl": "TVL",
-        "fees": "Fees",
-        "revenue": "Revenue",
-        "mc": "Market Cap",
-        "txns": "Transactions",
-        "daa": "Daily Active Addresses",
-        "dau": "Daily Active Users",
-        "fdmc": "Fully Diluted Market Cap"
-    }
-    
-    time_period_display = {
-        "1w": "1 Week",
-        "mtd": "Month to Date",
-        "1m": "1 Month",
-        "3m": "3 Months",
-        "6m": "6 Months",
-        "ytd": "Year to Date",
-        "1y": "1 Year",
-        "all": "All Time"
-    }.get(time_period, time_period)
-    
-    granularity_display = {
-        "1d": "Daily",
-        "1w": "Weekly",
-        "1m": "Monthly"
-    }.get(granularity, granularity)
-    
-    # Create title with multiple metrics
-    metric_displays = [metric_display.get(metric, metric.capitalize()) for metric in metrics]
-    title = f"{' vs '.join(metric_displays)} - {ticker_display} ({time_period_display}, {granularity_display})"
-    if is_percentage:
-        title += " (%)"
-    
-    status_message = await update.message.reply_text(f"📊 Generating {title}...")
+    status_message = await update.message.reply_text("📊 Generating chart...")
     
     try:
-        # Build and process chart
-        chart_url = build_chart_url(metrics, tickers_raw, asset_type, time_period, granularity, is_percentage)
+        # Generate chart using ChartGenerator
+        chart_image, chart_url, title, analysis = chart_generator.generate_chart(
+            metrics, tickers_raw, asset_type, time_period, granularity, is_percentage
+        )
         
-        screenshot_result = take_screenshot(chart_url)
+        # Format the caption with the analysis
+        caption = f"📊 *{title}*\n\n"
+        if analysis:
+            caption += f"*Market Analysis:*\n{analysis}\n\n"
+        caption += f"🔗 [View Interactive Chart]({chart_url})"
         
-        # Handle error responses
-        if isinstance(screenshot_result, str) and screenshot_result.startswith("ERROR:"):
-            error_code = screenshot_result.split(":")[1]
-            await status_message.delete()
-            
-            if error_code == "AUTH_REQUIRED":
-                await update.message.reply_text(
-                    "🔒 Authentication Required\n\n"
-                    "Please contact your administrator for access."
-                )
-            elif error_code == "NO_DATA":
-                await update.message.reply_text(
-                    f"📈 No Chart Data Available\n\n"
-                    f"I couldn't find any data for {ticker_display}.\n\n"
-                    f"Try different time periods (1m, 3m, 1y) or metrics (price, tvl, fees)."
-                )
-            elif error_code == "INVALID_PARAMETERS":
-                prefix = "=art " if is_group else ""
-                await update.message.reply_text(
-                    f"⚠️ Invalid Chart Parameters\n\n"
-                    f"Format: {prefix}<metric> [vs <metric>] <asset> <time_period> <granularity> [%]\n"
-                    f"Example: {prefix}price vs tvl solana 1w 1d"
-                )
-            else:
-                await update.message.reply_text(
-                    f"🛠️ Chart Generation Failed\n\n"
-                    f"Please try again later or with different parameters."
-                )
-            return
-        
-        # Send successful chart
+        # Send successful chart with analysis
         await update.message.reply_photo(
-            photo=screenshot_result,
-            caption=title
+            photo=chart_image,
+            caption=caption,
+            parse_mode="Markdown"
         )
         await status_message.delete()
         
+    except ValueError as e:
+        await status_message.delete()
+        await update.message.reply_text(str(e))
     except Exception as e:
         await status_message.delete()
         await update.message.reply_text(
