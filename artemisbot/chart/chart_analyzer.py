@@ -130,47 +130,4 @@ def generate_chart_summary_from_bytes(image_bytes: bytes) -> Optional[str]:
         
     except Exception as e:
         logger.error(f"Error generating chart summary from bytes: {str(e)}")
-        return None
-
-def test_chart_analysis(metrics: list, tickers: list, asset_type: str, time_period: str, granularity: str, is_percentage: bool = False) -> None:
-    """
-    Test function to analyze a chart directly.
-    
-    Args:
-        metrics: List of metrics to chart
-        tickers: List of tickers to chart
-        asset_type: Asset type (CHAIN, APPLICATION, etc.)
-        time_period: Time period for the chart
-        granularity: Data granularity
-        is_percentage: Whether to display as percentages
-    """
-    try:
-        # Build chart URL
-        chart_url = build_chart_url(metrics, tickers, asset_type, time_period, granularity, is_percentage)
-        print(f"Generated chart URL: {chart_url}")
-        
-        # Take screenshot
-        screenshot_path = take_screenshot(chart_url)
-        if isinstance(screenshot_path, str) and screenshot_path.startswith("ERROR:"):
-            print(f"Error taking screenshot: {screenshot_path}")
-            return
-            
-        # Generate analysis
-        analysis = generate_chart_summary(screenshot_path)
-        if analysis:
-            print("\nChart Analysis:")
-            print(analysis)
-        else:
-            print("Failed to generate chart analysis")
-            
-    except Exception as e:
-        print(f"Error during chart analysis: {str(e)}")
-
-if __name__ == "__main__":
-    # Test single metric
-    print("\nTesting single metric (Price for Solana):")
-    test_chart_analysis(['price'], ['solana'], 'CHAIN', '1w', '1d')
-    
-    # Test multiple metrics
-    print("\nTesting multiple metrics (Price vs TVL for Solana):")
-    test_chart_analysis(['price', 'tvl'], ['solana'], 'CHAIN', '1w', '1d') 
+        return None 
