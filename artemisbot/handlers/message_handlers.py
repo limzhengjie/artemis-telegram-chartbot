@@ -8,7 +8,7 @@ from artemisbot.utils.asset_mappings import get_asset_by_id, get_asset_by_symbol
 
 
 async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TYPE, 
-                      metric: str, tickers_raw: List[str], asset_type: str, 
+                      metrics: List[str], tickers_raw: List[str], asset_type: str, 
                       time_period: str, granularity: str, is_percentage: bool,
                       is_group: bool = False) -> None:
     """
@@ -17,7 +17,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
     Args:
         update: Telegram update object
         context: Telegram context object
-        metric: Chart metric (fees, tvl, etc.)
+        metrics: List of metrics to chart
         tickers_raw: List of tickers to chart
         asset_type: Asset type (CHAIN, APPLICATION, etc.)
         time_period: Time period for the chart
@@ -45,7 +45,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         "daa": "Daily Active Addresses",
         "dau": "Daily Active Users",
         "fdmc": "Fully Diluted Market Cap"
-    }.get(metric, metric.capitalize())
+    }
     
     time_period_display = {
         "1w": "1 Week",
@@ -64,7 +64,9 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         "1m": "Monthly"
     }.get(granularity, granularity)
     
-    title = f"{metric_display} - {ticker_display} ({time_period_display}, {granularity_display})"
+    # Create title with multiple metrics
+    metric_displays = [metric_display.get(metric, metric.capitalize()) for metric in metrics]
+    title = f"{' vs '.join(metric_displays)} - {ticker_display} ({time_period_display}, {granularity_display})"
     if is_percentage:
         title += " (%)"
     
@@ -72,7 +74,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
     
     try:
         # Build and process chart
-        chart_url = build_chart_url(metric, tickers_raw, asset_type, time_period, granularity, is_percentage)
+        chart_url = build_chart_url(metrics, tickers_raw, asset_type, time_period, granularity, is_percentage)
         
         screenshot_result = take_screenshot(chart_url)
         
@@ -89,15 +91,15 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
             elif error_code == "NO_DATA":
                 await update.message.reply_text(
                     f"📈 No Chart Data Available\n\n"
-                    f"I couldn't find any {metric_display} data for {ticker_display}.\n\n"
+                    f"I couldn't find any data for {ticker_display}.\n\n"
                     f"Try different time periods (1m, 3m, 1y) or metrics (price, tvl, fees)."
                 )
             elif error_code == "INVALID_PARAMETERS":
                 prefix = "=art " if is_group else ""
                 await update.message.reply_text(
                     f"⚠️ Invalid Chart Parameters\n\n"
-                    f"Format: {prefix}<metric> <asset> <time_period> <granularity> [%]\n"
-                    f"Example: {prefix}price solana 1w 1d"
+                    f"Format: {prefix}<metric> [vs <metric>] <asset> <time_period> <granularity> [%]\n"
+                    f"Example: {prefix}price vs tvl solana 1w 1d"
                 )
             else:
                 await update.message.reply_text(
@@ -139,7 +141,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(message_text)
         
         await process_chart_command(
-            update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage
+            update, context, [metric], tickers_raw, asset_type, time_period, granularity, is_percentage
         )
     except ValueError as e:
         await update.message.reply_text(
@@ -180,7 +182,7 @@ async def handle_group_message(update: Update, context: ContextTypes.DEFAULT_TYP
         metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(command_text, is_group=True)
         
         await process_chart_command(
-            update, context, metric, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
+            update, context, [metric], tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
         )
     except ValueError as e:
         print(f"Error processing command: {str(e)}")  # Debug log
@@ -292,14 +294,15 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """
     await update.message.reply_text(
         "📊 Artemis Analytics Chart Bot\n\n"
-        "Format: <metric> <asset> <time_period> <granularity> [%]\n\n"
+        "Format: <metric> [vs <metric>] <asset> <time_period> <granularity> [%]\n\n"
         "Examples:\n"
         "• price solana 1w 1d\n"
         "• fees ethereum 3m 1d\n"
-        "• tvl bitcoin 1y 1w %\n\n"
+        "• price vs tvl solana 1y 1d\n"
+        "• fees vs revenue ethereum 6m 1w %\n\n"
         "Metrics: price, volume, tvl, fees, revenue, mc, tx, fc\n"
         "Time Periods: 1w, mtd, 1m, 3m, 6m, ytd, 1y, all\n"
         "Granularity: 1d, 1w, 1m\n\n"
-        "In group chats, start with 'art '",
+        "In group chats, start with '=art '",
         parse_mode='Markdown'
     )

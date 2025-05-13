@@ -1,7 +1,7 @@
 from typing import List, Tuple
 from artemisbot.utils.asset_mappings import get_asset_by_symbol, get_asset_by_id
 
-def parse_command(command_text: str, is_group: bool = False) -> Tuple[str, List[str], str, str, str, bool]:
+def parse_command(command_text: str, is_group: bool = False) -> Tuple[List[str], List[str], str, str, str, bool]:
     """
     Parse command text into its components.
     
@@ -11,7 +11,7 @@ def parse_command(command_text: str, is_group: bool = False) -> Tuple[str, List[
         
     Returns:
         Tuple containing:
-        - metric: The metric to chart
+        - metrics: List of metrics to chart
         - tickers: List of asset tickers
         - asset_type: The type of asset
         - time_period: The time period for the chart
@@ -30,21 +30,43 @@ def parse_command(command_text: str, is_group: bool = False) -> Tuple[str, List[
     # Helper function to format error messages consistently
     def format_error(message: str) -> str:
         prefix = "=art " if is_group else ""
-        return f"{message}\n\nFormat: {prefix}<metric> <asset> <time_period> <granularity> [%]\nExample: {prefix}price solana 1w 1d"
+        return f"{message}\n\nFormat: {prefix}<metric> [vs <metric>] <asset> <time_period> <granularity> [%]\nExample: {prefix}price vs tvl solana 1w 1d"
     
     if len(parts) < 4:
         raise ValueError(format_error("Command must have at least 4 parts: <metric> <asset> <time_period> <granularity>"))
     
-    metric = parts[0].lower()
-    asset = parts[1].lower()
-    time_period = parts[2].lower()
-    granularity = parts[3].lower()
-    is_percentage = len(parts) > 4 and parts[4] == "%"
+    # Parse metrics (handle "vs" syntax)
+    metrics = []
+    current_index = 0
     
-    # Validate metric
+    while current_index < len(parts):
+        if parts[current_index].lower() == "vs":
+            current_index += 1
+            continue
+            
+        if current_index + 1 < len(parts) and parts[current_index + 1].lower() == "vs":
+            metrics.append(parts[current_index].lower())
+            current_index += 2
+        else:
+            metrics.append(parts[current_index].lower())
+            current_index += 1
+            break
+    
+    # Get remaining parts
+    remaining_parts = parts[current_index:]
+    if len(remaining_parts) < 3:
+        raise ValueError(format_error("Command must have at least 4 parts: <metric> <asset> <time_period> <granularity>"))
+    
+    asset = remaining_parts[0].lower()
+    time_period = remaining_parts[1].lower()
+    granularity = remaining_parts[2].lower()
+    is_percentage = len(remaining_parts) > 3 and remaining_parts[3] == "%"
+    
+    # Validate metrics
     valid_metrics = ["price", "volume", "tvl", "fees", "revenue", "mc", "txns", "daa", "dau", "fdmc"]
-    if metric not in valid_metrics:
-        raise ValueError(format_error(f"Invalid metric '{metric}'. Must be one of: {', '.join(valid_metrics)}"))
+    for metric in metrics:
+        if metric not in valid_metrics:
+            raise ValueError(format_error(f"Invalid metric '{metric}'. Must be one of: {', '.join(valid_metrics)}"))
     
     # Validate time period
     valid_periods = ["1w", "mtd", "1m", "3m", "6m", "ytd", "1y", "all"]
@@ -61,4 +83,4 @@ def parse_command(command_text: str, is_group: bool = False) -> Tuple[str, List[
     if not asset_info:
         raise ValueError(format_error(f"Asset '{asset}' not found"))
     
-    return metric, [asset_info["id"]], asset_info["type"], time_period, granularity, is_percentage
+    return metrics, [asset_info["id"]], asset_info["type"], time_period, granularity, is_percentage

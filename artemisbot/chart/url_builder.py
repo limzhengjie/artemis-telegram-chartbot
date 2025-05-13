@@ -3,12 +3,12 @@ import urllib.parse
 from typing import List
 from artemisbot.utils.asset_mappings import get_asset_by_id, get_asset_by_symbol
 
-def build_chart_url(metric: str, tickers: List[str], asset_type: str, time_period: str, granularity: str, is_percentage: bool = False) -> str:
+def build_chart_url(metrics: List[str], tickers: List[str], asset_type: str, time_period: str, granularity: str, is_percentage: bool = False) -> str:
     """
     Build a chart URL for the Artemis Analytics platform.
     
     Args:
-        metric: The metric to chart (e.g., 'price', 'volume', 'tvl')
+        metrics: List of metrics to chart (e.g., ['price', 'volume', 'tvl'])
         tickers: List of asset tickers to include
         asset_type: The type of asset (e.g., 'chain', 'application')
         time_period: The time period for the chart (e.g., '1w', '1m', '1y')
@@ -63,11 +63,6 @@ def build_chart_url(metric: str, tickers: List[str], asset_type: str, time_perio
     if not artemis_granularity:
         raise ValueError(f"Invalid granularity: {granularity}")
     
-    # Get the Artemis metric ID
-    artemis_metric = metric_map.get(metric.lower())
-    if not artemis_metric:
-        raise ValueError(f"Invalid metric: {metric}")
-    
     # Get asset names for display
     asset_names = []
     for ticker in tickers:
@@ -88,7 +83,7 @@ def build_chart_url(metric: str, tickers: List[str], asset_type: str, time_perio
         "daa": "Daily Active Addresses",
         "dau": "Daily Active Users",
         "fdmc": "Fully Diluted Market Cap"
-    }.get(metric, metric.capitalize())
+    }
     
     time_period_display = {
         "1w": "1 Week",
@@ -107,7 +102,9 @@ def build_chart_url(metric: str, tickers: List[str], asset_type: str, time_perio
         "1m": "Monthly"
     }.get(granularity, granularity)
     
-    title = f"{metric_display} - {'/'.join(asset_names)} ({time_period_display}, {granularity_display})"
+    # Create title with multiple metrics
+    metric_displays = [metric_display.get(metric, metric.capitalize()) for metric in metrics]
+    title = f"{' vs '.join(metric_displays)} - {'/'.join(asset_names)} ({time_period_display}, {granularity_display})"
     if is_percentage:
         title += " (%)"
     
@@ -122,38 +119,45 @@ def build_chart_url(metric: str, tickers: List[str], asset_type: str, time_perio
         "series": []
     }
     
-    # Add assets to series
-    for ticker in tickers:
-        asset_info = get_asset_by_id(ticker) or get_asset_by_symbol(ticker)
-        if not asset_info:
-            raise ValueError(f"Unknown asset: {ticker}")
+    # Add assets to series for each metric
+    colors = ["#8A88FF", "#EFCE6C", "#FF6B6B", "#4ECDC4", "#45B7D1"]  # Different colors for each metric
+    
+    for i, metric in enumerate(metrics):
+        artemis_metric = metric_map.get(metric.lower())
+        if not artemis_metric:
+            raise ValueError(f"Invalid metric: {metric}")
             
-        # Use the asset type from the asset info if available, otherwise use the provided type
-        asset_type_to_use = asset_info.get("type", asset_type).upper()
-        
-        series_item = {
-            "asset": {
-                "group": asset_type_to_use,
-                "artemisId": asset_info["id"],
-                "name": asset_info.get("name", ticker.capitalize()),
-                "symbol": asset_info.get("symbol", ticker.lower()),
-                "iconUrl": ""
-            },
-            "metric": {
-                "artemisId": artemis_metric
-            },
-            "setting": {
-                "type": "LINE",
-                "display": "TIMELINE",
-                "scale": "LINEAR",
-                "units": "PERCENTAGE" if is_percentage else "RAW",
-                "visible": True,
-                "showInLegend": True,
-                "color": "#8A88FF",
-                "yAxis": 0
+        for ticker in tickers:
+            asset_info = get_asset_by_id(ticker) or get_asset_by_symbol(ticker)
+            if not asset_info:
+                raise ValueError(f"Unknown asset: {ticker}")
+                
+            # Use the asset type from the asset info if available, otherwise use the provided type
+            asset_type_to_use = asset_info.get("type", asset_type).upper()
+            
+            series_item = {
+                "asset": {
+                    "group": asset_type_to_use,
+                    "artemisId": asset_info["id"],
+                    "name": asset_info.get("name", ticker.capitalize()),
+                    "symbol": asset_info.get("symbol", ticker.lower()),
+                    "iconUrl": ""
+                },
+                "metric": {
+                    "artemisId": artemis_metric
+                },
+                "setting": {
+                    "type": "LINE" if i == 0 else "COLUMN",  # First metric as line, others as columns
+                    "display": "TIMELINE",
+                    "scale": "LINEAR",
+                    "units": "PERCENTAGE" if is_percentage else "RAW",
+                    "visible": True,
+                    "showInLegend": True,
+                    "color": colors[i % len(colors)],
+                    "yAxis": i  # Different y-axis for each metric
+                }
             }
-        }
-        chart_config["series"].append(series_item)
+            chart_config["series"].append(series_item)
     
     # Encode the configuration as a URL-safe JSON string
     encoded_config = urllib.parse.quote(json.dumps(chart_config))
