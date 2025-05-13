@@ -138,16 +138,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         return
     
     try:
-        metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(message_text)
+        metrics, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(message_text)
         
         await process_chart_command(
-            update, context, [metric], tickers_raw, asset_type, time_period, granularity, is_percentage
+            update, context, metrics, tickers_raw, asset_type, time_period, granularity, is_percentage
         )
     except ValueError as e:
         await update.message.reply_text(
             f"Error: {str(e)}\n\n"
-            f"Format: <metric> <asset> <time_period> <granularity> [%]\n"
-            f"Example: price solana 1w 1d"
+            f"Format: <metric> [vs <metric>] <asset> <time_period> <granularity> [%]\n"
+            f"Example: price vs tvl solana 1w 1d"
         )
 
 
@@ -179,17 +179,17 @@ async def handle_group_message(update: Update, context: ContextTypes.DEFAULT_TYP
         return
         
     try:
-        metric, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(command_text, is_group=True)
+        metrics, tickers_raw, asset_type, time_period, granularity, is_percentage = parse_command(command_text, is_group=True)
         
         await process_chart_command(
-            update, context, [metric], tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
+            update, context, metrics, tickers_raw, asset_type, time_period, granularity, is_percentage, is_group=True
         )
     except ValueError as e:
         print(f"Error processing command: {str(e)}")  # Debug log
         await update.message.reply_text(
             f"Error: {str(e)}\n\n"
-            f"Format: =art <metric> <asset> <time_period> <granularity> [%]\n"
-            f"Example: =art price solana 1w 1d"
+            f"Format: =art <metric> [vs <metric>] <asset> <time_period> <granularity> [%]\n"
+            f"Example: =art price vs tvl solana 1w 1d"
         )
 
 
