@@ -5,6 +5,9 @@ from typing import Optional, List
 import httpx
 from datetime import datetime
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -12,7 +15,8 @@ CRYPTOPANIC_API_KEY = os.getenv('CRYPTOPANIC_API_KEY')
 CRYPTOPANIC_API_URL = 'https://cryptopanic.com/api/v1/posts/?public=true'
 
 # Load artemis_mappings.json
-with open('artemis_mappings.json', 'r') as f:
+mappings_path = os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'artemis_mappings.json')
+with open(mappings_path, 'r') as f:
     artemis_mappings = json.load(f)
 
 class NewsAnalyzer:
@@ -27,7 +31,7 @@ class NewsAnalyzer:
         """
         Fetch today's crypto news headlines from CryptoPanic.
         Optionally filter by asset (symbol).
-        Returns a list of headlines.
+        Returns a list of headlines. If no news for today, returns the most recent news.
         """
         if not self.cryptopanic_api_key:
             logger.error("CRYPTOPANIC_API_KEY not set in environment.")
@@ -45,16 +49,20 @@ class NewsAnalyzer:
                 resp.raise_for_status()
                 data = resp.json()
                 today = datetime.utcnow().date()
-                headlines = []
+                headlines_today = []
+                headlines_recent = []
                 for post in data.get('results', []):
                     published = post.get('published_at', '')
                     if published:
                         pub_date = datetime.fromisoformat(published.replace('Z', '+00:00')).date()
                         if pub_date == today:
-                            headlines.append(post.get('title', ''))
-                logger.info(f"API Key: {self.cryptopanic_api_key}")
-                logger.info(f"CryptoPanic API response: {data}")
-                return headlines[:10]  # Limit to 10 headlines
+                            headlines_today.append(post.get('title', ''))
+                        if len(headlines_recent) < 5:
+                            headlines_recent.append(post.get('title', ''))
+                if headlines_today:
+                    return headlines_today[:10]
+                else:
+                    return headlines_recent[:5]
             except Exception as e:
                 logger.error(f"Error fetching news from CryptoPanic: {e}")
                 return []
@@ -62,10 +70,10 @@ class NewsAnalyzer:
     async def get_market_news(self, asset: Optional[str] = None) -> str:
         """
         Get a summary of today's market news, optionally filtered by asset.
-        If asset is provided, check artemis_mappings.json for the asset symbol.
+        If asset is provided, check artemis_mappings.json for the asset symbol or artemis_id.
         """
         if asset:
-            # Check artemis_mappings.json for the asset symbol
+            # Check artemis_mappings.json for the asset symbol or artemis_id
             asset_symbol = artemis_mappings.get(asset.lower(), asset.lower())
             headlines = await self.fetch_today_news(asset_symbol)
         else:
@@ -87,6 +95,8 @@ class NewsAnalyzer:
                 max_tokens=850,
                 temperature=0.7
             )
+            if len(headlines) < 5:
+                return "No fresh news found for today. Here is the most recent news:\n" + response.choices[0].message.content.strip()
             return response.choices[0].message.content.strip()
         except Exception as e:
             logger.error(f"Error generating market news summary: {e}")
