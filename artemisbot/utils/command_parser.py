@@ -25,7 +25,10 @@ def parse_command(command_text: str, is_group: bool = False) -> Tuple[List[str],
     if command_text.startswith('=art'):
         command_text = command_text[4:].strip()
     
-    parts = command_text.split()
+    # Split on commas first, then on spaces
+    parts = []
+    for part in command_text.split(','):
+        parts.extend(part.strip().split())
     
     # Helper function to format error messages consistently
     def format_error(message: str) -> str:
@@ -40,11 +43,11 @@ def parse_command(command_text: str, is_group: bool = False) -> Tuple[List[str],
     current_index = 0
     
     while current_index < len(parts):
-        if parts[current_index].lower() == "vs" or parts[current_index].lower() == ",":
+        if parts[current_index].lower() == "vs":
             current_index += 1
             continue
             
-        if current_index + 1 < len(parts) and (parts[current_index + 1].lower() == "vs" or parts[current_index + 1].lower() == ","):
+        if current_index + 1 < len(parts) and parts[current_index + 1].lower() == "vs":
             metrics.append(parts[current_index].lower())
             current_index += 2
         else:
