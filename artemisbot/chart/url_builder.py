@@ -157,6 +157,6 @@ def build_chart_url(metric: str, tickers: List[str], asset_type: str, time_perio
     
     # Encode the configuration as a URL-safe JSON string
     encoded_config = urllib.parse.quote(json.dumps(chart_config))
-    url = f"https://app.artemis.xyz/chart-builder/{encoded_config}"
+    url = f"https://app.artemisanalytics.com/chart-builder/{encoded_config}"
     
     return url
