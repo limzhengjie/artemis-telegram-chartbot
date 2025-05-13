@@ -40,11 +40,11 @@ def parse_command(command_text: str, is_group: bool = False) -> Tuple[List[str],
     current_index = 0
     
     while current_index < len(parts):
-        if parts[current_index].lower() == "vs":
+        if parts[current_index].lower() == "vs" or parts[current_index].lower() == ",":
             current_index += 1
             continue
             
-        if current_index + 1 < len(parts) and parts[current_index + 1].lower() == "vs":
+        if current_index + 1 < len(parts) and (parts[current_index + 1].lower() == "vs" or parts[current_index + 1].lower() == ","):
             metrics.append(parts[current_index].lower())
             current_index += 2
         else:
