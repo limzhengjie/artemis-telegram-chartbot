@@ -26,7 +26,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         is_percentage: Whether to display as percentages
         is_group: Whether this is a group chat message
     """
-    status_message = await update.message.reply_text("📊 Generating chart...")
+    status_message = await update.message.reply_text(f"📊 Generating chart for {', '.join(metrics)} of {', '.join(tickers_raw)}... Please wait while I fetch the data and analyze it for you.")
     
     try:
         # Generate chart using ChartGenerator
@@ -35,8 +35,7 @@ async def process_chart_command(update: Update, context: ContextTypes.DEFAULT_TY
         )
         
         # Format the caption with the analysis
-        caption = f"*{title}*\n\n{analysis[:100]}..."  # Truncate analysis to 100 characters
-        caption += f"🔗 [View Interactive Chart]({chart_url})"
+        caption = f"*{title}*\n\n*Summary:* {analysis[:500]}...\n\n*Full Analysis:* {analysis}\n\n🔗 [View Interactive Chart]({chart_url})"
         
         # Send successful chart with analysis
         await update.message.reply_photo(
