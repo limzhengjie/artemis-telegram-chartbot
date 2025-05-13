@@ -4,11 +4,16 @@ from openai import AsyncOpenAI
 from typing import Optional, List
 import httpx
 from datetime import datetime
+import json
 
 logger = logging.getLogger(__name__)
 
 CRYPTOPANIC_API_KEY = os.getenv('CRYPTOPANIC_API_KEY')
 CRYPTOPANIC_API_URL = 'https://cryptopanic.com/api/v1/posts/?public=true'
+
+# Load artemis_mappings.json
+with open('artemis_mappings.json', 'r') as f:
+    artemis_mappings = json.load(f)
 
 class NewsAnalyzer:
     def __init__(self):
@@ -57,8 +62,14 @@ class NewsAnalyzer:
     async def get_market_news(self, asset: Optional[str] = None) -> str:
         """
         Get a summary of today's market news, optionally filtered by asset.
+        If asset is provided, check artemis_mappings.json for the asset symbol.
         """
-        headlines = await self.fetch_today_news(asset)
+        if asset:
+            # Check artemis_mappings.json for the asset symbol
+            asset_symbol = artemis_mappings.get(asset.lower(), asset.lower())
+            headlines = await self.fetch_today_news(asset_symbol)
+        else:
+            headlines = await self.fetch_today_news()
         if not headlines:
             return "No fresh news found for today."
         prompt = (
@@ -73,7 +84,7 @@ class NewsAnalyzer:
                     {"role": "system", "content": "You are a crypto market analyst providing concise news summaries."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=500,
+                max_tokens=850,
                 temperature=0.7
             )
             return response.choices[0].message.content.strip()
