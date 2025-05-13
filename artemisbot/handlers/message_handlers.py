@@ -146,7 +146,7 @@ async def handle_news_command(update: Update, context: ContextTypes.DEFAULT_TYPE
         context: Telegram context object
         args: List of arguments (optional asset identifier)
     """
-    status_message = await update.message.reply_text("📰 Fetching latest market news... Please wait while I analyze the data.")
+    status_message = await update.message.reply_text("📰 Fetching latest market news... \n\nPlease wait while I analyze the market news.")
     
     try:
         # Get the asset identifier if provided

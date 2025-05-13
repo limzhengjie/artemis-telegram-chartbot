@@ -1,49 +1,45 @@
 import os
-import openai
 import logging
-from datetime import datetime, timedelta
+from openai import AsyncOpenAI
+from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 class NewsAnalyzer:
     def __init__(self):
-        self.client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-        
-    async def get_market_news(self, asset_id: str = None) -> str:
+        """Initialize the NewsAnalyzer with OpenAI client."""
+        self.client = AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+    
+    async def get_market_news(self, asset: Optional[str] = None) -> str:
         """
-        Get a summary of today's market news, optionally filtered by asset.
+        Get a summary of market news, optionally filtered by asset.
         
         Args:
-            asset_id: Optional asset identifier (symbol or artemis_id)
+            asset (str, optional): Asset to filter news for (e.g., 'eth', 'btc', 'solana')
             
         Returns:
-            str: A concise summary of market news
+            str: Summary of market news
         """
         try:
-            # Construct the prompt based on whether an asset was specified
-            if asset_id:
-                prompt = f"""Analyze today's market news and provide a concise summary focusing on {asset_id.upper()}. 
-                Include key price movements, significant events, and market sentiment. 
-                Keep the response under 500 characters and focus on the most impactful news."""
+            # Construct the prompt based on whether an asset is specified
+            if asset:
+                prompt = f"Provide a concise summary of the latest market news specifically about {asset.upper()}. Focus on price movements, significant events, and market sentiment. Keep it under 500 characters."
             else:
-                prompt = """Analyze today's crypto market news and provide a concise summary of the overall market conditions.
-                Include key price movements, significant events, and market sentiment.
-                Keep the response under 500 characters and focus on the most impactful news."""
+                prompt = "Provide a concise summary of the latest market news. Focus on major price movements, significant events, and overall market sentiment. Keep it under 500 characters."
             
-            # Get response from ChatGPT
+            # Get response from OpenAI
             response = await self.client.chat.completions.create(
                 model="gpt-4",
                 messages=[
-                    {"role": "system", "content": "You are a crypto market analyst providing concise, factual summaries of market news."},
+                    {"role": "system", "content": "You are a crypto market analyst providing concise news summaries."},
                     {"role": "user", "content": prompt}
                 ],
                 max_tokens=500,
                 temperature=0.7
             )
             
-            # Extract and return the summary
-            summary = response.choices[0].message.content.strip()
-            logging.info("Successfully generated market news summary")
-            return summary
+            return response.choices[0].message.content.strip()
             
         except Exception as e:
-            logging.error(f"Error generating market news summary: {str(e)}")
-            raise Exception("Failed to generate market news summary. Please try again later.") 
+            logger.error(f"Error generating market news summary: {e}")
+            return "Failed to generate market news summary. Please try again later." 
